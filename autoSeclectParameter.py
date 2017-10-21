@@ -17,9 +17,9 @@ import os
 
 
 knn = KNeighborsClassifier()
-for r,_,files in os.walk('splitData/'):
+for r,_,files in os.walk('splitData/'):                               #自行修改为当前目录名
     for file in files:
-        data = pd.read_csv(os.path.join('splitData/',file))
+        data = pd.read_csv(os.path.join('splitData/',file))           #自行修改为当前目录名
         location = data['longitude']
         location = pd.DataFrame(location)
         location.insert(column= 'latitude',value=data['latitude'],loc = 0)
