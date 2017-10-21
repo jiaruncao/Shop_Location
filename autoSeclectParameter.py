@@ -43,25 +43,6 @@ for r,_,files in os.walk('splitData/'):
         
 
 
-# In[27]:
-
-
-
-
-
-# In[20]:
-
-
-mydata
-
-
-# In[19]:
-
-
-location = mydata['longitude']
-
-
-# In[ ]:
 
 
 
