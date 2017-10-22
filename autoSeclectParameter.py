@@ -19,6 +19,7 @@ import os
 knn = KNeighborsClassifier()
 for r,_,files in os.walk('splitData/'):                               #自行修改为当前目录名
     for file in files:
+        print file
         data = pd.read_csv(os.path.join('splitData/',file))           #自行修改为当前目录名
         location = data['longitude']
         location = pd.DataFrame(location)
@@ -33,9 +34,10 @@ for r,_,files in os.walk('splitData/'):                               #自行修
         weight_options = ['uniform','distance']
         algorithm_options = ['auto','ball_tree','kd_tree','brute']
         param_gridknn = dict(n_neighbors = k_range,weights = weight_options,algorithm=algorithm_options,leaf_size=leaf_range)
-        gridKNN = GridSearchCV(knn,param_gridknn,cv=3,scoring='accuracy',verbose=1)
+        gridKNN = GridSearchCV(knn,param_gridknn,cv=3,scoring='accuracy',verbose=1,error_score= 0)
         gridKNN.fit(location,label)
         fr = open('parameter.txt','a')
+        fr.write(str(file)+'\n')
         fr.write(str(gridKNN.best_score_)+'\n')
         fr.write(str(gridKNN.best_params_)+'\n')
         fr.write('\n')
