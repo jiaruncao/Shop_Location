@@ -32,8 +32,8 @@ for r,_,files in os.walk('splitData/'):                               #自行修
         k_range = list(range(1,20))
         leaf_range = list(range(1,2))
         weight_options = ['uniform','distance']
-        algorithm_options = ['auto','ball_tree','kd_tree','brute']
-        param_gridknn = dict(n_neighbors = k_range,weights = weight_options,algorithm=algorithm_options,leaf_size=leaf_range)
+     #   algorithm_options = ['auto','ball_tree','kd_tree','brute']
+        param_gridknn = dict(n_neighbors = k_range,weights = weight_options,leaf_size=leaf_range)
         gridKNN = GridSearchCV(knn,param_gridknn,cv=3,scoring='accuracy',verbose=1,error_score= 0)
         gridKNN.fit(location,label)
         fr = open('parameter.txt','a')
