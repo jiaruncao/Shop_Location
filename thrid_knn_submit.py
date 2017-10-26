@@ -124,7 +124,7 @@ for mall in malls:
     result = pd.DataFrame(columns=['row_id','shop_id'])
     result = pd.concat([result,pre_result],axis = 0)
     print mall
-    test.to_csv('result_'+mall+'.csv',index=None)
+    result.to_csv('result_'+mall+'.csv',index=None)
 #result.to_csv('result.csv',index = 0)
 
 
