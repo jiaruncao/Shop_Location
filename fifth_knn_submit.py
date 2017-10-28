@@ -133,20 +133,11 @@ for mall in malls:
     wifi_matrix1[:,0:2] = wifi_matrix1[:,0:2] *0.75
 
     #---------------------Predict----------------------------
-    knn = KNeighborsClassifier()
+    knn = KNeighborsClassifier(n_jobs= -1)
+    knn.fit(wifi_matrix,label)
+    predict = knn.predict(wifi_matrix1)
+    predict = pd.DataFrame(predict,columns=['shop_id'])
 
-    k_range = list(range(1,20))
-#weight_options = ['uniform','distance']
-       # algorithm_options = ['auto','ball_tree','kd_tree','brute']
-    param_gridknn = dict(n_neighbors = k_range)
-    gridKNN = GridSearchCV(knn,param_gridknn,cv=3,scoring='accuracy',verbose=1,error_score= 0,n_jobs=-1)
-    gridKNN.fit(wifi_matrix,label)
-    fr = open('knn_wifi_Parameter.txt','a')
-    fr.write(str(mall)+'\n')
-    fr.write(str(gridKNN.best_params_)+'\n')
-    fr.write('\n')
-    fr.close()
-    predict = gridKNN.predict(wifi_matrix1)
     predict = pd.DataFrame(predict,columns=['shop_id'])
     pre_result = pd.concat([test['row_id'],predict['shop_id']],axis = 1)
     result = pd.DataFrame(columns=['row_id','shop_id'])
