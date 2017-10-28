@@ -24,7 +24,7 @@ malls=malls.mall_id.values.tolist()
 
 
 
-malls = ['m_2058','m_1831']
+#malls = ['m_2058','m_1831']
 
 
 # In[28]:
@@ -102,7 +102,7 @@ for mall in malls:
     for i in allWifi_sorted:
         i_ = 'b_' + str(i)
         Wifi_sorted.append(i_)
-    print Wifi_sorted.index('b_2410')
+#    print Wifi_sorted.index('b_2410')
     wifi_matrix  = np.zeros([int(data['wifi_infos'].count()),len(allWifi_sorted)+2])
     wifi_matrix[:,0:2] = data_loc
     counter = 0
