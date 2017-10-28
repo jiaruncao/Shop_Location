@@ -127,13 +127,13 @@ for mall in malls:
         counter1 += 1
     label = list(data['shop_id'])
    
-    wifi_matrix[:,0:2] = wifi_matrix[:,0:2]/100.0
+    wifi_matrix[:,0:2] = wifi_matrix[:,0:2]*1000.0
     wifi_matrix[:,0:2] = wifi_matrix[:,0:2]*0.68
-    wifi_matrix1[:,0:2] = wifi_matrix1[:,0:2]/100.0
+    wifi_matrix1[:,0:2] = wifi_matrix1[:,0:2]*1000.0
     wifi_matrix1[:,0:2] = wifi_matrix1[:,0:2] *0.75
 
     #---------------------Predict----------------------------
-    knn = KNeighborsClassifier(n_jobs= -1)
+    knn = KNeighborsClassifier(n_jobs= -1,n_neighbors=20)
     knn.fit(wifi_matrix,label)
     predict = knn.predict(wifi_matrix1)
     predict = pd.DataFrame(predict,columns=['shop_id'])
