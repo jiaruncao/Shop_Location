@@ -127,10 +127,10 @@ for mall in malls:
         counter1 += 1
     label = list(data['shop_id'])
    
-    wifi_matrix[:,0:2] = wifi_matrix[:,0:2]*1000.0
-    wifi_matrix[:,0:2] = wifi_matrix[:,0:2]*0.68
-    wifi_matrix1[:,0:2] = wifi_matrix1[:,0:2]*1000.0
-    wifi_matrix1[:,0:2] = wifi_matrix1[:,0:2] *0.75
+ #   wifi_matrix[:,0:2] = wifi_matrix[:,0:2]*1000.0
+#    wifi_matrix[:,0:2] = wifi_matrix[:,0:2]*0.68
+ #   wifi_matrix1[:,0:2] = wifi_matrix1[:,0:2]*1000.0
+ #   wifi_matrix1[:,0:2] = wifi_matrix1[:,0:2] *0.75
 
     #---------------------Predict----------------------------
     knn = KNeighborsClassifier(n_jobs= -1,n_neighbors=20)
@@ -143,7 +143,7 @@ for mall in malls:
     result = pd.DataFrame(columns=['row_id','shop_id'])
     result = pd.concat([result,pre_result],axis = 0)
     print mall
-    result.to_csv('resuat_'+mall+'.csv',index=None)
+    result.to_csv('result_'+mall+'.csv',index=None)
 #result.to_csv('result.csv',index = 0)
 
 
